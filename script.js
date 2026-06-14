@@ -1,78 +1,86 @@
-// ===== Welcome Modal (opens instantly on page load) =====
-(function() {
-    const modal = document.getElementById('welcomeModal');
-    const closeBtn = document.getElementById('closeModal');
-    const orderBtn = document.getElementById('orderNowBtn');
+// ===== Welcome modal: instant open =====
+(function () {
+  const modal = document.getElementById("welcomeModal");
+  const closeBtn = document.getElementById("closeModal");
+  const orderBtn = document.getElementById("orderNowBtn");
+  if (!modal) return;
 
-    function closeModal() {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-    }
+  document.body.style.overflow = "hidden";
 
-    // Prevent background scroll while modal is open
-    document.body.style.overflow = 'hidden';
+  function closeModal() {
+    modal.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
 
-    closeBtn.addEventListener('click', closeModal);
+  closeBtn.addEventListener("click", closeModal);
 
-    orderBtn.addEventListener('click', function() {
-        closeModal();
-        const menuSection = document.getElementById('menu');
-        if (menuSection) {
-            menuSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+  orderBtn.addEventListener("click", function () {
+    closeModal();
+    const target = document.getElementById("course");
+    if (target) target.scrollIntoView({ behavior: "smooth" });
+  });
 
-    // Close on overlay click (but not on content click)
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) closeModal();
+  });
 
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeModal();
-        }
-    });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+  });
 })();
 
-// ===== Smooth scroll for nav links =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
+// ===== Smooth scroll for hash links =====
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (href.length < 2) return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
 });
 
-// ===== Scroll reveal animation =====
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// ===== Reveal on scroll =====
+const revealEls = document.querySelectorAll(
+  ".reason, .course-card, .way, .shop, .voice, .menu-block",
+);
+revealEls.forEach((el) => el.classList.add("reveal"));
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        io.unobserve(entry.target);
+      }
     });
-}, observerOptions);
+  },
+  { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+);
+revealEls.forEach((el) => io.observe(el));
 
-document.querySelectorAll('.headline-card, .menu-item, .delivery-card, .location-card, .testimonial, .value-item').forEach(el => {
-    el.classList.add('reveal');
-    observer.observe(el);
-});
-
-// ===== Contact form submission =====
-const form = document.querySelector('.contact-form');
+// ===== Form: handle submit =====
+const form = document.querySelector(".reserve-form");
 if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('お問い合わせありがとうございます。\n24時間以内にご連絡いたします。');
-        form.reset();
-    });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert(
+      "お問い合わせを承りました。\n二営業日以内にご返信いたします。\n\n— Naoki Pizza",
+    );
+    form.reset();
+  });
+}
+
+// ===== Header shadow on scroll =====
+const header = document.querySelector(".site-header");
+if (header) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      header.style.boxShadow = "0 1px 0 rgba(243, 237, 225, 0.06)";
+    } else {
+      header.style.boxShadow = "none";
+    }
+  });
 }
